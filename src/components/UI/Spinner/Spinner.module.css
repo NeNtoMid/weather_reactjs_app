@@ -1,0 +1,14 @@
+.spinnerInWeather {
+	text-align: center;
+	margin-top: 2rem;
+}
+
+.spinnerInMap {
+	text-align: center;
+	margin-top: 5rem;
+}
+
+.spinnerInSearch {
+	width: 2rem;
+	height: 3rem;
+}
