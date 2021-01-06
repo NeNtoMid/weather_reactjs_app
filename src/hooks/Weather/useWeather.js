@@ -17,13 +17,19 @@ const useWeather = () => {
 	const handleInputUpdate = ({ target: { value } }) => {
 		let err = '';
 
-		if (value !== '' && value.search(/^[a-zA-Z\d\-_.,\s]+$/g) === -1) {
+		if (
+			value !== '' &&
+			value.search(
+				/^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$/
+			) === -1
+		) {
 			err = `You can't use ! @ # $ % ^ & * ( ) + - =`;
 		}
 
 		setInput((prevState) => ({
 			...prevState,
 			value,
+
 			inputError: err,
 		}));
 	};
@@ -43,7 +49,7 @@ const useWeather = () => {
 					const results = await axios.get(
 						`https://api.openweathermap.org/data/2.5/weather?q=${
 							input.value ? input.value : 'Warsaw'
-						}&appid=b87335950c8c62d9aac7b3d0ff68a1e8&units=imperial`
+						}&appid=b87335950c8c62d9aac7b3d0ff68a1e8&units=metric`
 					);
 
 					setWeather((prevState) => ({

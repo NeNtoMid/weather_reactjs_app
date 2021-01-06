@@ -14,7 +14,19 @@
 	width: 300px;
 }
 
-@media screen and (min-width: 780px) {
+@media screen and (min-width: 300px) {
+	.mapouter {
+		margin-left: -8%;
+		width: 200px;
+		height: 200px;
+	}
+	.gmap_canvas {
+		width: 200px;
+		height: 200px;
+	}
+}
+
+@media screen and (min-width: 700px) {
 	.mapouter {
 		margin-left: -8%;
 	}
