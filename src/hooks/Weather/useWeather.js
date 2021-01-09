@@ -1,13 +1,22 @@
 import { useState, useEffect } from 'react';
 
-import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+
+import {
+	fetchWeatherData,
+	setWeatherError,
+	addCityToHistory,
+	deleteForecastData,
+} from './../../store/actions/index';
 
 const useWeather = () => {
-	const [weather, setWeather] = useState({
-		option: [],
-		input: '',
-		history: [],
-	});
+	const dispatch = useDispatch();
+
+	const weatherData = useSelector((state) => state.wth.data);
+
+	const history = useSelector((state) => state.wth.history);
+
+	const error = useSelector((state) => state.wth.error);
 
 	const [input, setInput] = useState({
 		value: '',
@@ -23,78 +32,49 @@ const useWeather = () => {
 				/^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$/
 			) === -1
 		) {
-			err = `You can't use ! @ # $ % ^ & * ( ) + - =`;
+			err = `You can't use ! @ # $ % ^ & * ( ) + - = etc.`;
 		}
 
 		setInput((prevState) => ({
 			...prevState,
 			value,
-
 			inputError: err,
 		}));
 	};
 
-	const [error, setError] = useState(false);
-
 	const clearError = () => {
-		setError(false);
+		dispatch(setWeatherError(false));
 	};
 
 	useEffect(() => {
 		let timer;
 
-		const handleFetchingWeather = () => {
-			timer = setTimeout(async () => {
-				try {
-					const results = await axios.get(
-						`https://api.openweathermap.org/data/2.5/weather?q=${
-							input.value ? input.value : 'Warsaw'
-						}&appid=b87335950c8c62d9aac7b3d0ff68a1e8&units=metric`
-					);
+		const handleFetchWeatherData = () => {
+			timer = setTimeout(() => {
+				dispatch(fetchWeatherData(input.value));
 
-					setWeather((prevState) => ({
-						...prevState,
-						option: results.data,
-						error: false,
-					}));
-				} catch ({ message }) {
-					if (message === 'Network Error') {
-						setError(message);
-					}
-					console.log(message);
-				}
+				dispatch(deleteForecastData());
 			}, 1000);
 		};
 
 		if (!input.inputError) {
-			handleFetchingWeather();
+			handleFetchWeatherData();
 		}
 
 		return () => {
 			clearTimeout(timer);
 		};
-	}, [input.value, input.inputError]);
+	}, [input.value, input.inputError, dispatch]);
 
 	useEffect(() => {
-		const searchedOption =
-			Object.keys(weather.option).length > 0 &&
-			`${weather.option.name} , ${weather.option.sys.country}`;
-
-		if (
-			searchedOption &&
-			weather.history.every((el) => el !== searchedOption)
-		) {
-			setWeather((prevState) => ({
-				...prevState,
-				history: [...prevState.history, searchedOption],
-			}));
-		}
-	}, [input.value, weather.option, weather.history]);
+		dispatch(addCityToHistory());
+	}, [weatherData, dispatch]);
 
 	return {
-		weather,
+		weatherData,
 		input,
 		error,
+		history,
 		handleInputUpdate,
 		clearError,
 	};

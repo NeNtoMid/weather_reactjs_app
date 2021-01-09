@@ -27,7 +27,6 @@ const Error = ({ err, onClose }) => {
 					Unfortunately, there occured some error. We do the best to fix it.
 					Please try again another time
 					<Typography color='secondary' variant='subtitle1'>
-						{' '}
 						Error: {err}
 					</Typography>
 				</DialogContentText>

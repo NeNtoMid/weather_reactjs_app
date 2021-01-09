@@ -12,3 +12,9 @@
 	width: 2rem;
 	height: 3rem;
 }
+
+.spinnerInForecast {
+	width: 1rem;
+
+	margin: 1rem auto;
+}

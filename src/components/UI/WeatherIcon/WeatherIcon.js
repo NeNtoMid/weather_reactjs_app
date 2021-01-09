@@ -2,12 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ClimateIcon = ({ weatherIcon }) => {
-	return (
-		<img
-			src={`https://openweathermap.org/img/w/${weatherIcon}.png`}
-			alt='weather icon'
-		/>
-	);
+	return <img src={`https:${weatherIcon}`} alt='weather icon' />;
 };
 
 ClimateIcon.propTypes = {

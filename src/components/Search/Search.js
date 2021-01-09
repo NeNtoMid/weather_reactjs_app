@@ -5,8 +5,6 @@ import { TextField } from '@material-ui/core';
 
 import { Autocomplete } from '@material-ui/lab';
 
-import classes from './Search.module.css';
-
 import { useSpring, animated } from 'react-spring';
 
 const Search = (props) => {
@@ -18,9 +16,12 @@ const Search = (props) => {
 	});
 
 	return (
-		<animated.nav style={animation} className={classes.Search}>
+		<animated.nav
+			style={animation}
+			className={{ textAlign: 'center', marginTop: '2rem' }}
+		>
 			<Autocomplete
-				options={props.forwardOption}
+				options={props.forwardOptionsHistory}
 				freeSolo
 				renderInput={(params) => (
 					<TextField
@@ -41,8 +42,9 @@ const Search = (props) => {
 
 Search.propTypes = {
 	value: PropTypes.string.isRequired,
-	forwardOption: PropTypes.array.isRequired,
+	forwardOptionsHistory: PropTypes.array.isRequired,
 	onChange: PropTypes.func.isRequired,
+	error: PropTypes.string.isRequired,
 };
 
 export default Search;

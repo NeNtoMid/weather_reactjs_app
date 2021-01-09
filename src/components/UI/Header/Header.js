@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 
 import { Typography } from '@material-ui/core';
 
@@ -29,4 +29,4 @@ const Header = () => {
 	);
 };
 
-export default memo(Header);
+export default Header;

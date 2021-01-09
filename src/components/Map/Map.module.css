@@ -48,30 +48,12 @@
 
 @media screen and (min-width: 700px) and (max-width: 949px) {
 	.mapouter {
-		margin-left: -8%;
+		margin-left: 0%;
 	}
 }
 
 @media screen and (min-width: 950px) and (max-width: 1099px) {
 	.mapouter {
-		margin-left: -25%;
-	}
-}
-
-@media screen and (min-width: 1100px) {
-	.mapouter {
-		margin-left: -35%;
-	}
-}
-
-@media screen and (min-width: 1200px) {
-	.mapouter {
-		margin-left: -40%;
-	}
-}
-
-@media screen and (min-width: 1300px) {
-	.mapouter {
-		margin-left: -50%;
+		margin-left: 0%;
 	}
 }

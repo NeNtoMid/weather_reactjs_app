@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Container } from '@material-ui/core';
@@ -7,9 +7,7 @@ import classes from './Map.module.css';
 
 import Spinner from './../UI/Spinner/Spinner';
 
-const Map = ({ city }) => {
-	const [loading, setLoading] = useState(true);
-
+const Map = ({ city, country, loading, load }) => {
 	const map = loading && <Spinner spinnerInMap />;
 
 	return (
@@ -22,12 +20,12 @@ const Map = ({ city }) => {
 						width='300'
 						height='200'
 						id='gmap_canvas'
-						src={`https://maps.google.com/maps?q=${city}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+						src={`https://maps.google.com/maps?q=${city}+${country}&t=&z=13&ie=UTF8&iwloc=&output=embed&mrt=loc`}
 						frameBorder='0'
 						scrolling='no'
 						marginHeight='0'
 						marginWidth='0'
-						onLoad={() => setLoading(false)}
+						onLoad={load}
 					></iframe>
 				</div>
 			</div>
@@ -37,6 +35,7 @@ const Map = ({ city }) => {
 
 Map.propTypes = {
 	city: PropTypes.string.isRequired,
+	country: PropTypes.string.isRequired,
 };
 
 export default Map;

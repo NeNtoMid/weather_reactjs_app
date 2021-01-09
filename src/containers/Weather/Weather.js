@@ -6,7 +6,7 @@ import Search from './../../components/Search/Search';
 
 import { Container } from '@material-ui/core';
 
-import WeatherInfo from './../../components/WeatherInfo/WeatherInfo';
+import WeatherInformation from './../../components/WeatherInformation/WeatherInformation';
 
 import Spinner from './../../components/UI/Spinner/Spinner';
 
@@ -16,10 +16,10 @@ import { useSpring, animated, config } from 'react-spring';
 
 const Weather = () => {
 	const {
-		weather,
+		weatherData,
 		input,
 		error,
-		loading,
+		history,
 		handleInputUpdate,
 		clearError,
 	} = useWeather();
@@ -37,10 +37,10 @@ const Weather = () => {
 		</animated.div>
 	);
 
-	if (weather.option.cod && weather.option.cod.toString() === '200') {
+	if (Object.keys(weatherData).length > 0) {
 		results = (
 			<animated.div style={fade}>
-				<WeatherInfo weather={weather.option} />
+				<WeatherInformation weather={weatherData} />
 			</animated.div>
 		);
 	}
@@ -50,9 +50,8 @@ const Weather = () => {
 			<Search
 				value={input.value}
 				error={input.inputError}
-				forwardOption={weather.history}
+				forwardOptionsHistory={history}
 				onChange={handleInputUpdate}
-				loading={loading}
 			/>
 			{results}
 			<Error err={error} onClose={clearError} />
