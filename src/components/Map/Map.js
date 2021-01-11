@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { Container } from '@material-ui/core';
@@ -38,4 +38,4 @@ Map.propTypes = {
 	country: PropTypes.string.isRequired,
 };
 
-export default Map;
+export default memo(Map);

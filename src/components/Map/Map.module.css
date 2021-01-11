@@ -16,7 +16,7 @@
 
 @media screen and (min-width: 300px) and (max-width: 369px) {
 	.mapouter {
-		margin-left: -24%;
+		margin-left: -15%;
 		transform: scale(0.85);
 	}
 	.gmap_canvas {

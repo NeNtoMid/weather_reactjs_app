@@ -30,7 +30,7 @@ const DiscreteSlider = () => {
 
 	if (forecastsinHourVersion.length > 0) {
 		render = [...new Set(forecastsinHourVersion)].map((day) => (
-			<Container key={day} fixed style={{ width: '130%' }}>
+			<Container key={day} fixed style={{ width: '170%' }}>
 				<Card className={cardClass.root} variant='outlined'>
 					<CardContent>
 						<Container>
@@ -40,7 +40,7 @@ const DiscreteSlider = () => {
 						</Container>
 						<Container className={containerClass.root}>
 							<Slider
-								style={{ marginTop: 50 }}
+								style={{ marginTop: 50, fontSize: '3rem' }}
 								defaultValue={0}
 								getAriaValueText={valuetext}
 								aria-labelledby='discrete-slider-always'

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { Container, Typography } from '@material-ui/core';
@@ -24,4 +24,7 @@ WeatherInformation.propTypes = {
 	weather: PropTypes.object.isRequired,
 };
 
-export default WeatherInformation;
+export default memo(
+	WeatherInformation,
+	(prevProps, nextProps) => prevProps.weather === nextProps.weather
+);

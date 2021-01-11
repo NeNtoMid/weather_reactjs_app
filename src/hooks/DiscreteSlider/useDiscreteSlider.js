@@ -8,8 +8,7 @@ import { setForecastError } from './../../store/actions/index';
 
 const useContainerStyles = makeStyles((theme) => ({
 	root: {
-		minWidth: 100,
-		minHeight: 150,
+		minWidth: 480,
 	},
 	margin: {
 		height: theme.spacing(3),
@@ -18,7 +17,7 @@ const useContainerStyles = makeStyles((theme) => ({
 
 const useCardStyles = makeStyles({
 	root: {
-		minWidth: 100,
+		minWidth: 470,
 		marginTop: 50,
 		margin: '0 50 ',
 	},

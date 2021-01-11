@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { Container } from '@material-ui/core';
 
@@ -65,4 +65,4 @@ const VerticalTabs = () => {
 	return render;
 };
 
-export default VerticalTabs;
+export default memo(VerticalTabs);

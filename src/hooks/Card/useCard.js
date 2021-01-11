@@ -8,7 +8,7 @@ import { fetchForecastData } from './../../store/actions/index';
 
 const useCardStyles = makeStyles({
 	root: {
-		minWidth: 100,
+		minWidth: 350,
 	},
 });
 
