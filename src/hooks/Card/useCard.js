@@ -29,6 +29,7 @@ const useCard = (weather) => {
 	const [showBtn, setShowBtn] = useState({
 		loading: false,
 		disabled: false,
+		loadComponent: false,
 	});
 
 	const handleShowDetails = () => {
@@ -38,13 +39,14 @@ const useCard = (weather) => {
 	const dispatch = useDispatch();
 
 	const handleFetchData = async () => {
-		setShowBtn({ disabled: false, loading: true });
+		setShowBtn({ disabled: false, loading: true, loadComponent: true });
 		await dispatch(fetchForecastData(weather.location.name));
 
-		setShowBtn({
+		setShowBtn((prevState) => ({
+			...prevState,
 			loading: false,
 			disabled: true,
-		});
+		}));
 	};
 
 	const weatherData = useSelector((state) => state.wth.data);

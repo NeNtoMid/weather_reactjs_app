@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 
 import Map from '../../components/Map/Map';
@@ -19,7 +19,9 @@ import WbSunnyIcon from '@material-ui/icons/WbSunny';
 
 import useCard from '../../hooks/Card/useCard';
 
-import VerticalTabs from '../VerticalTabs/VerticalTabs';
+// import VerticalTabs from '../VerticalTabs/VerticalTabs';
+
+const VerticalTabs = lazy(() => import('../VerticalTabs/VerticalTabs'));
 
 const Card = ({ weather }) => {
 	const {
@@ -32,6 +34,16 @@ const Card = ({ weather }) => {
 		handleFetchData,
 		removeMapLoading,
 	} = useCard(weather);
+
+	let verticalTabs = null;
+
+	if (showBtn.loadComponent) {
+		verticalTabs = (
+			<Suspense fallback={<CircularProgress />}>
+				<VerticalTabs />
+			</Suspense>
+		);
+	}
 
 	let btn = <CircularProgress />;
 
@@ -73,9 +85,7 @@ const Card = ({ weather }) => {
 						<Container>{btn}</Container>
 					</Grid>
 
-					<Grid item>
-						<VerticalTabs />
-					</Grid>
+					<Grid item>{verticalTabs}</Grid>
 				</Grid>
 			</CardContent>
 		</CardWrapper>
