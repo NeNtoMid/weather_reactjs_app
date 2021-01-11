@@ -25,6 +25,8 @@ const useWeather = () => {
 		inputError: '',
 	});
 
+	const language = useIntl().locale;
+
 	const handleInputUpdate = ({ target: { value } }) => {
 		let err = '';
 
@@ -34,7 +36,10 @@ const useWeather = () => {
 				/^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$/
 			) === -1
 		) {
-			err = `You can't use ! @ # $ % ^ & * ( ) + - = etc.`;
+			err =
+				language === 'en'
+					? `You can't use ! @ # $ % ^ & * ( ) + - = etc.`
+					: `Nie możesz używać ! @ # $ % ^ & * ( ) + - = etc.`;
 		}
 
 		setInput((prevState) => ({
@@ -47,8 +52,6 @@ const useWeather = () => {
 	const clearError = () => {
 		dispatch(setWeatherError(false));
 	};
-
-	const language = useIntl().locale;
 
 	useEffect(() => {
 		let timer;

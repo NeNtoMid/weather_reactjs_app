@@ -6,5 +6,5 @@ export const messages = {
 	pl: messages_pl,
 	en: messages_en,
 };
-export const language = navigator.language.split(/[-_]/)[0];
+export const language = 'pl';
 console.log('language:', language);
