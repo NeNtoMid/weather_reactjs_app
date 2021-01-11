@@ -12,6 +12,8 @@ import {
 
 import WeatherIcon from '../UI/WeatherIcon/WeatherIcon';
 
+import { FormattedMessage } from 'react-intl';
+
 const ForecastInformation = ({
 	weather,
 	click,
@@ -31,10 +33,12 @@ const ForecastInformation = ({
 			</Typography>
 
 			<Typography color='textSecondary' gutterBottom>
-				Average temperature {weather.day.avgtemp_c}&#176;C {'  '}
+				<FormattedMessage id='forecastInformation.avg_temp' />
+				{weather.day.avgtemp_c}&#176;C {'  '}
 			</Typography>
 			<Typography color='textSecondary' gutterBottom>
-				Weather condition: {weather.day.condition.text}
+				<FormattedMessage id='forecastInformation.weatherCondition' />:{' '}
+				{weather.day.condition.text}
 			</Typography>
 			<Typography
 				variant='button'
@@ -42,7 +46,8 @@ const ForecastInformation = ({
 				align='left'
 				color='textPrimary'
 			>
-				<i className='fas fa-tint'></i> {'  '}Average humidity: {'  '}
+				<i className='fas fa-tint'></i> {'  '}
+				<FormattedMessage id='forecastInformation.avg_humidity' />: {'  '}
 				{weather.day.avghumidity} <strong>%</strong>
 			</Typography>
 
@@ -52,7 +57,8 @@ const ForecastInformation = ({
 				align='left'
 				color='textPrimary'
 			>
-				<i className='fas fa-cloud-rain'></i>Chance to rain:{' '}
+				<i className='fas fa-cloud-rain'></i>
+				<FormattedMessage id='forecastInformation.chanceToRain' />:{' '}
 				{weather.day.daily_chance_of_rain} <strong>%</strong>
 			</Typography>
 
@@ -62,7 +68,8 @@ const ForecastInformation = ({
 				align='left'
 				color='textPrimary'
 			>
-				<i className='fas fa-snowflake'></i> Chance to snow:{' '}
+				<i className='fas fa-snowflake'></i>{' '}
+				<FormattedMessage id='forecastInformation.chanceToSnow' /> :{' '}
 				{weather.day.daily_chance_of_snow} <strong>%</strong>
 			</Typography>
 
@@ -73,7 +80,8 @@ const ForecastInformation = ({
 				color='textPrimary'
 				style={{ fontSize: '0.8rem' }}
 			>
-				<i className='fas fa-eye'></i> Average visibility:{' '}
+				<i className='fas fa-eye'></i>{' '}
+				<FormattedMessage id='forecastInformation.avg_visibility' />:{' '}
 				{weather.day.avgvis_km}
 				<strong>km</strong>
 			</Typography>
@@ -84,8 +92,9 @@ const ForecastInformation = ({
 				align='left'
 				color='textPrimary'
 			>
-				<i className='fas fa-wind'></i>Max wind speed: {weather.day.maxwind_kph}{' '}
-				<strong>km/h</strong>
+				<i className='fas fa-wind'></i>{' '}
+				<FormattedMessage id='forecastInformation.maxWindSpeed' />:{' '}
+				{weather.day.maxwind_kph} <strong>km/h</strong>
 			</Typography>
 			<Typography
 				variant='button'
@@ -93,7 +102,9 @@ const ForecastInformation = ({
 				align='left'
 				color='textPrimary'
 			>
-				<i className='fas fa-sun'></i> Sunrise: {weather.astro.sunrise}
+				<i className='fas fa-sun'></i>{' '}
+				<FormattedMessage id='forecastInformation.sunrise' />:{' '}
+				{weather.astro.sunrise}
 			</Typography>
 			<Typography
 				variant='button'
@@ -101,7 +112,9 @@ const ForecastInformation = ({
 				align='left'
 				color='textPrimary'
 			>
-				<i className='fas fa-cloud-moon'></i> Sunset: {weather.astro.sunset}
+				<i className='fas fa-cloud-moon'></i>{' '}
+				<FormattedMessage id='forecastInformation.sunset' />:{' '}
+				{weather.astro.sunset}
 			</Typography>
 
 			<ClickAwayListener onClickAway={tooltipClose}>
@@ -115,7 +128,11 @@ const ForecastInformation = ({
 						disableFocusListener
 						disableHoverListener
 						disableTouchListener
-						title={<Typography variant='subtitle1'>&#8595; Go down</Typography>}
+						title={
+							<Typography variant='subtitle1'>
+								&#8595; <FormattedMessage id='forecastInformation.tooltipBtn' />{' '}
+							</Typography>
+						}
 						arrow
 						placement='bottom-end'
 					>
@@ -128,7 +145,8 @@ const ForecastInformation = ({
 								tooltipOpen();
 							}}
 						>
-							See hour version
+							<FormattedMessage id='forecastInformation.seeHourVersionBtn' />
+						
 						</Button>
 					</Tooltip>
 				</div>

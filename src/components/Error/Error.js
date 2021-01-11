@@ -1,6 +1,8 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
+import { FormattedMessage } from 'react-intl';
+
 import {
 	Dialog,
 	DialogTitle,
@@ -20,12 +22,20 @@ const Error = ({ err, onClose }) => {
 			aria-describedby='alert-dialog-description'
 		>
 			<DialogTitle id='alert-dialog-title'>
-				{'We occured some error'}
+				{
+					<FormattedMessage
+						id='error.title'
+						description='alert-dialog-title error'
+					/>
+				}
 			</DialogTitle>
 			<DialogContent>
 				<DialogContentText id='alert-dialog-description'>
-					Unfortunately, there occured some error. We do the best to fix it.
-					Please try again another time
+					<FormattedMessage
+						id='error.description'
+						description='alert-dialog-description error'
+					/>
+
 					<Typography color='secondary' variant='subtitle1'>
 						Error: {err}
 					</Typography>
@@ -33,7 +43,10 @@ const Error = ({ err, onClose }) => {
 			</DialogContent>
 			<DialogActions>
 				<Button onClick={onClose} color='secondary' autoFocus>
-					Agree
+					<FormattedMessage
+						id='error.button'
+						description='button for agreement error'
+					/>
 				</Button>
 			</DialogActions>
 		</Dialog>

@@ -7,6 +7,8 @@ import { Autocomplete } from '@material-ui/lab';
 
 import { useSpring, animated } from 'react-spring';
 
+import { FormattedMessage } from 'react-intl';
+
 const Search = (props) => {
 	const animation = useSpring({
 		from: { opacity: 0, width: '10%', height: '10%' },
@@ -26,7 +28,9 @@ const Search = (props) => {
 				renderInput={(params) => (
 					<TextField
 						{...params}
-						label='Search city'
+						label={
+							<FormattedMessage id='search.bar' description='search city bar' />
+						}
 						margin='normal'
 						variant='outlined'
 						error={props.error ? true : false}

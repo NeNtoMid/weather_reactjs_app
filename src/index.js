@@ -4,36 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import reduxThunk from 'redux-thunk';
-
 import { Provider } from 'react-redux';
 
-import { applyMiddleware, createStore, compose, combineReducers } from 'redux';
+import store from './redux';
 
-import weatherReducer from './store/reducers/weather';
+import { IntlProvider } from 'react-intl';
 
-import forecastReducer from './store/reducers/forecast';
-
-const rootReducer = combineReducers({
-	wth: weatherReducer,
-	forecast: forecastReducer,
-});
-
-const composeEnhancers =
-	process.env.NODE_ENV === 'development'
-		? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-		: compose;
-
-const store = createStore(
-	rootReducer,
-	composeEnhancers(applyMiddleware(reduxThunk))
-);
+import { language, messages } from './intl';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Provider store={store}>
-			<App />
-		</Provider>
+		<IntlProvider locale={language} messages={messages[language]}>
+			<Provider store={store}>
+				<App />
+			</Provider>
+		</IntlProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );

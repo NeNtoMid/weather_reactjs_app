@@ -5,8 +5,12 @@ import { Container, Typography, Button } from '@material-ui/core';
 
 import WeatherIcon from './../UI/WeatherIcon/WeatherIcon';
 
+import { FormattedMessage, useIntl } from 'react-intl';
+
 const CardDetails = ({ weather, click, show, isInSlider, shouldMathRound }) => {
 	let details = null;
+
+	const language = useIntl().locale;
 
 	if (!show) {
 		details = (
@@ -16,7 +20,7 @@ const CardDetails = ({ weather, click, show, isInSlider, shouldMathRound }) => {
 				color='primary'
 				onClick={click}
 			>
-				Details
+				<FormattedMessage id='cardDetails.showDetailsBtn' />
 			</Button>
 		);
 	} else if (show && !isInSlider) {
@@ -28,7 +32,8 @@ const CardDetails = ({ weather, click, show, isInSlider, shouldMathRound }) => {
 					align='left'
 					color='textPrimary'
 				>
-					<i className='fas fa-wind'></i> Wind degree:{' '}
+					<i className='fas fa-wind'></i>
+					<FormattedMessage id='cardDetails.windDegree' />:{' '}
 					{Math.round(weather.current.wind_degree)} <strong>&#176;:</strong>
 				</Typography>
 				<Typography
@@ -37,7 +42,8 @@ const CardDetails = ({ weather, click, show, isInSlider, shouldMathRound }) => {
 					align='left'
 					color='textPrimary'
 				>
-					<i className='fas fa-cloud'></i> Clouds: {weather.current.cloud}
+					<i className='fas fa-cloud'></i>{' '}
+					<FormattedMessage id='cardDetails.clouds' />: {weather.current.cloud}
 				</Typography>
 				<Typography
 					variant='button'
@@ -45,7 +51,8 @@ const CardDetails = ({ weather, click, show, isInSlider, shouldMathRound }) => {
 					align='left'
 					color='textPrimary'
 				>
-					<i className='fas fa-arrow-right'></i> Gust of wind:{'  '}
+					<i className='fas fa-arrow-right'></i>{' '}
+					<FormattedMessage id='cardDetails.gustOfWind' />:{'  '}
 					{weather.current.gust_kph} <strong>km/h</strong>
 				</Typography>
 				<Typography
@@ -54,7 +61,8 @@ const CardDetails = ({ weather, click, show, isInSlider, shouldMathRound }) => {
 					align='left'
 					color='textPrimary'
 				>
-					<i className='fas fa-flag'></i> Timezone:{'  '}
+					<i className='fas fa-flag'></i>{' '}
+					<FormattedMessage id='cardDetails.timezone' />:{'  '}
 					<strong>{weather.location.tz_id}</strong>
 				</Typography>
 				<Typography
@@ -63,7 +71,8 @@ const CardDetails = ({ weather, click, show, isInSlider, shouldMathRound }) => {
 					align='left'
 					color='textPrimary'
 				>
-					<i className='fas fa-arrows-alt-h'></i> {'  '}Latitude:{'  '}
+					<i className='fas fa-arrows-alt-h'></i> {'  '}
+					<FormattedMessage id='cardDetails.latitude' />:{'  '}
 					<strong>{weather.location.lat}</strong>
 				</Typography>
 				<Typography
@@ -73,7 +82,8 @@ const CardDetails = ({ weather, click, show, isInSlider, shouldMathRound }) => {
 					color='textPrimary'
 				>
 					<i className='fas fa-arrows-alt-v'></i>
-					{'  '}Longitude:{'  '}
+					{'  '}
+					<FormattedMessage id='cardDetails.longitude' />:{'  '}
 					<strong>{weather.location.lon}</strong>
 				</Typography>
 				<Typography
@@ -83,7 +93,8 @@ const CardDetails = ({ weather, click, show, isInSlider, shouldMathRound }) => {
 					color='textPrimary'
 				>
 					<i className='fas fa-clock'></i>
-					{'  '}Time in this city:{'  '}
+					{'  '}
+					<FormattedMessage id='cardDetails.localTimeInCity' />:{'  '}
 					<strong>{weather.location.localtime}</strong>
 				</Typography>
 			</>
@@ -102,12 +113,13 @@ const CardDetails = ({ weather, click, show, isInSlider, shouldMathRound }) => {
 				&#176;C
 			</Typography>
 			<Typography color='textSecondary' gutterBottom>
-				Feels like{' '}
+				<FormattedMessage id='cardDetails.feels_like' />{' '}
 				{shouldMathRound
 					? Math.round(weather.current.feelslike_c)
 					: weather.current.feelslike_c}
 				&#176;C {'  '}
-				Weather condition: {weather.current.condition.text}
+				<FormattedMessage id='cardDetails.weather_condition' />:{' '}
+				{weather.current.condition.text}
 			</Typography>
 			<Typography
 				variant='button'
@@ -115,7 +127,8 @@ const CardDetails = ({ weather, click, show, isInSlider, shouldMathRound }) => {
 				align='left'
 				color='textPrimary'
 			>
-				<i className='fas fa-tint'></i> Humidity: {'  '}
+				<i className='fas fa-tint'></i>{' '}
+				<FormattedMessage id='cardDetails.humidity' />: {'  '}
 				{weather.current.humidity} <strong>%</strong>
 			</Typography>
 
@@ -125,7 +138,8 @@ const CardDetails = ({ weather, click, show, isInSlider, shouldMathRound }) => {
 				align='left'
 				color='textPrimary'
 			>
-				<i className='fas fa-filter'></i> Pressure:{' '}
+				<i className='fas fa-filter'></i>{' '}
+				<FormattedMessage id='cardDetails.pressure' />:{' '}
 				{weather.current.pressure_mb} <strong>hPa</strong>
 			</Typography>
 
@@ -135,8 +149,9 @@ const CardDetails = ({ weather, click, show, isInSlider, shouldMathRound }) => {
 				align='left'
 				color='textPrimary'
 			>
-				<i className='fas fa-location-arrow'></i> Wind:{' '}
-				{weather.current.wind_kph} <strong>km/h</strong>
+				<i className='fas fa-location-arrow'></i>{' '}
+				<FormattedMessage id='cardDetails.wind' />: {weather.current.wind_kph}{' '}
+				<strong>km/h</strong>
 			</Typography>
 
 			<Typography
@@ -145,7 +160,8 @@ const CardDetails = ({ weather, click, show, isInSlider, shouldMathRound }) => {
 				align='left'
 				color='textPrimary'
 			>
-				<i className='fas fa-eye'></i> Visibility:{' '}
+				<i className='fas fa-eye'></i>{' '}
+				<FormattedMessage id='cardDetails.visibility' />:{' '}
 				{Math.round(weather.current.vis_km)} <strong>km</strong>
 			</Typography>
 			<Typography
@@ -160,7 +176,16 @@ const CardDetails = ({ weather, click, show, isInSlider, shouldMathRound }) => {
 				) : (
 					<i className='fas fa-sun'></i>
 				)}{' '}
-				It's a {weather.current.is_day === 0 ? 'night' : 'day'}
+				<FormattedMessage id='cardDetails.itIsDayOrNigth' />{' '}
+				{weather.current.is_day === 0 && language === 'en'
+					? 'night'
+					: weather.current.is_day !== 0 && language === 'en'
+					? 'day'
+					: weather.current.is_day === 0 && language === 'pl'
+					? 'noc'
+					: weather.current.is_day !== 0 && language === 'pl'
+					? 'dzień'
+					: null}
 			</Typography>
 			{details}
 		</Container>

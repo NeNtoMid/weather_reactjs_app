@@ -9,7 +9,7 @@ import {
 
 import converter from './../../utils/converter';
 
-export const fetchWeatherData = (input) => {
+export const fetchWeatherData = (input, language) => {
 	return async (dispatch) => {
 		try {
 			const inputWithoutDiacritics = converter(input);
@@ -17,7 +17,7 @@ export const fetchWeatherData = (input) => {
 			const result = await axios.get(
 				`https://api.weatherapi.com/v1/current.json?key=28ac7d653988484ab6c101044210701&q=${
 					inputWithoutDiacritics ? inputWithoutDiacritics : 'Warsaw'
-				}`
+				}&lang=${language}`
 			);
 
 			dispatch({

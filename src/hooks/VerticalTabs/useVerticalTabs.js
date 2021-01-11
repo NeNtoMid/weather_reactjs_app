@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { setForecastIntoHourVersion } from './../../store/actions/index';
 
+import { useIntl } from 'react-intl';
+
 const a11yProps = (index) => {
 	return {
 		id: `vertical-tab-${index}`,
@@ -27,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const days = [
+let days = [
 	'Sunday',
 	'Monday',
 	'Tuesday',
@@ -70,6 +72,27 @@ const useVerticalTabs = () => {
 	const handleTooltipClose = () => {
 		setTooltipOpen(false);
 	};
+
+	const language = useIntl().locale;
+
+	if (language === 'pl') {
+		days = [
+			'Poniedziałek',
+			'Wtorek',
+			'Środa',
+			'Czwartek',
+			'Piątek',
+			'Sobota',
+			'Niedziela',
+			'Poniedziałek',
+			'Wtorek',
+			'Środa',
+			'Czwartek',
+			'Piątek',
+			'Sobota',
+			'Niedziela',
+		];
+	}
 
 	return {
 		dayName: d.getDay(),

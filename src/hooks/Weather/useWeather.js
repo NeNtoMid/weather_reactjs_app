@@ -9,6 +9,8 @@ import {
 	deleteForecastData,
 } from './../../store/actions/index';
 
+import { useIntl } from 'react-intl';
+
 const useWeather = () => {
 	const dispatch = useDispatch();
 
@@ -46,12 +48,14 @@ const useWeather = () => {
 		dispatch(setWeatherError(false));
 	};
 
+	const language = useIntl().locale;
+
 	useEffect(() => {
 		let timer;
 
 		const handleFetchWeatherData = () => {
 			timer = setTimeout(() => {
-				dispatch(fetchWeatherData(input.value));
+				dispatch(fetchWeatherData(input.value, language));
 
 				dispatch(deleteForecastData());
 			}, 1000);
@@ -64,7 +68,7 @@ const useWeather = () => {
 		return () => {
 			clearTimeout(timer);
 		};
-	}, [input.value, input.inputError, dispatch]);
+	}, [input.value, input.inputError, dispatch, language]);
 
 	useEffect(() => {
 		dispatch(addCityToHistory());

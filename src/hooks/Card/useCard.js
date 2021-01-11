@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchForecastData } from './../../store/actions/index';
 
+import { useIntl } from 'react-intl';
+
 const useCardStyles = makeStyles({
 	root: {
 		minWidth: 350,
@@ -38,9 +40,11 @@ const useCard = (weather) => {
 
 	const dispatch = useDispatch();
 
+	const language = useIntl().locale;
+
 	const handleFetchData = async () => {
 		setShowBtn({ disabled: false, loading: true, loadComponent: true });
-		await dispatch(fetchForecastData(weather.location.name));
+		await dispatch(fetchForecastData(weather.location.name, language));
 
 		setShowBtn((prevState) => ({
 			...prevState,

@@ -8,11 +8,11 @@ import {
 	SET_FORECAST_ERROR,
 } from './actionsType';
 
-export const fetchForecastData = (city) => {
+export const fetchForecastData = (city, language) => {
 	return async (dispatch) => {
 		try {
 			const result = await axios.get(
-				`https://api.weatherapi.com/v1/forecast.json?key=28ac7d653988484ab6c101044210701&q=${city}&days=5`
+				`https://api.weatherapi.com/v1/forecast.json?key=28ac7d653988484ab6c101044210701&q=${city}&days=5&lang=${language}`
 			);
 
 			dispatch({

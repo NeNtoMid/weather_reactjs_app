@@ -19,7 +19,7 @@ import WbSunnyIcon from '@material-ui/icons/WbSunny';
 
 import useCard from '../../hooks/Card/useCard';
 
-// import VerticalTabs from '../VerticalTabs/VerticalTabs';
+import { FormattedMessage } from 'react-intl';
 
 const VerticalTabs = lazy(() => import('../VerticalTabs/VerticalTabs'));
 
@@ -58,7 +58,11 @@ const Card = ({ weather }) => {
 				disabled={showBtn.disabled}
 				style={{ marginBottom: 15 }}
 			>
-				Get Forecast for 3 days
+				<FormattedMessage
+					id='card.getForecastBtn'
+					description='Card button to get forecast'
+				/>
+			
 			</Button>
 		);
 	}
