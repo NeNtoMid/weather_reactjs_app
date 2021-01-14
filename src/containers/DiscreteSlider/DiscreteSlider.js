@@ -30,7 +30,7 @@ const DiscreteSlider = () => {
 
 	if (forecastsinHourVersion.length > 0) {
 		render = [...new Set(forecastsinHourVersion)].map((day) => (
-			<Container key={day} fixed style={{ width: '170%' }}>
+			<Container key={day} style={{ width: '170%' }}>
 				<Card className={cardClass.root} variant='outlined'>
 					<CardContent>
 						<Container>

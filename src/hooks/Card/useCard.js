@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import { makeStyles } from '@material-ui/core';
 
@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchForecastData } from './../../store/actions/index';
 
 import { useIntl } from 'react-intl';
+
+import gsap from 'gsap';
 
 const useCardStyles = makeStyles({
 	root: {
@@ -65,12 +67,26 @@ const useCard = (weather) => {
 		setMapLoading(false);
 	};
 
+	const cardRef = useRef(null);
+
+	useEffect(() => {
+		const cardElements = cardRef.current.children;
+
+		gsap.fromTo(
+			cardElements,
+			{ autoAlpha: 0, y: '+=300' },
+			{ autoAlpha: 1, y: '-=300', duration: 1, stagger: 1, delay: 6 }
+		);
+		console.log('cardElement:', cardElements);
+	}, []);
+
 	return {
 		cardStyles,
 		btnClass,
 		showDetails,
 		showBtn,
 		mapLoading,
+		cardRef,
 		handleShowDetails,
 		handleFetchData,
 		removeMapLoading,

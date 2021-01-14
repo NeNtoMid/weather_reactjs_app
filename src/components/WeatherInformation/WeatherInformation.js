@@ -1,13 +1,26 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { Container, Typography } from '@material-ui/core';
 
 import Card from './../../containers/Card/Card';
 
+import gsap from 'gsap';
+
 const WeatherInformation = (props) => {
+	const weatherInformationRef = useRef(null);
+
+	useEffect(() => {
+		const weatherElements = weatherInformationRef.current;
+
+		gsap.fromTo(
+			weatherElements.children,
+			{ autoAlpha: 0, y: '+=250' },
+			{ autoAlpha: 1, y: '-=250', duration: 1, delay: 1, stagger: 2 }
+		);
+	}, []);
 	return (
-		<Container style={{ marginTop: 35 }}>
+		<Container style={{ marginTop: 35 }} ref={weatherInformationRef}>
 			<Typography display='inline' color='primary' variant='h3'>
 				{props.weather.location.name}
 			</Typography>

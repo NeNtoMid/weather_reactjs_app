@@ -19,20 +19,20 @@ const ForecastHour = ({ data }) => {
 	if (locale === 'pl') {
 		dateFormat.i18n = {
 			dayNames: [
-				'Nie',
 				'Pon',
 				'Wt',
 				'Śr',
 				'Czw',
 				'Pt',
 				'Sob',
-				'Niedziela',
+				'Nie',
 				'Poniedziałek',
 				'Wtorek',
 				'Środa',
 				'Czwartek',
 				'Piątek',
 				'Sobota',
+				'Niedziela',
 			],
 			monthNames: [
 				'Sty',

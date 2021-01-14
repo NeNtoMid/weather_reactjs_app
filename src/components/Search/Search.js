@@ -9,6 +9,8 @@ import { FormattedMessage } from 'react-intl';
 
 import gsap from 'gsap';
 
+import { isMobile } from 'mobile-device-detect';
+
 const Search = (props) => {
 	const searchRef = useRef(null);
 	useEffect(() => {
@@ -17,9 +19,24 @@ const Search = (props) => {
 		gsap.fromTo(
 			searchElement,
 			{ autoAlpha: 0, scaleX: 0, y: '+=250' },
-			{ scaleX: 1, y: '-=250', autoAlpha: 1, duration: 1, ease: 'power3.inOut' }
+			{
+				scaleX: 1,
+				y: '-=250',
+				autoAlpha: 1,
+				duration: 1,
+				ease: 'power3.inOut',
+				delay: 4,
+			}
 		);
 	}, []);
+
+	useEffect(() => {
+		if (isMobile) {
+			const inputElement =
+				searchRef.current.children[0].children[1].children[0];
+			inputElement.blur();
+		}
+	}, [props.forwardOptionsHistory]);
 	return (
 		<Autocomplete
 			ref={searchRef}

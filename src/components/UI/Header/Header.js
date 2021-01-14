@@ -10,6 +10,8 @@ import gsap from 'gsap';
 
 import { ReactComponent as WeatherSvg } from './../../../images/weather.svg';
 
+import classes from './Header.module.css';
+
 const now = new Date();
 
 const Header = () => {
@@ -107,17 +109,27 @@ const Header = () => {
 
 	return (
 		<Container component='header'>
-			<Container ref={svgRef} style={{ marginTop: '2rem' }}>
-				<WeatherSvg style={{ width: '80%' }} />
+			<Container ref={svgRef} className={classes.svgWrapper}>
+				<WeatherSvg className={classes.weatherSvg} />
 			</Container>
 			<Container ref={titleRef}>
-				<Typography variant='h1' align='center' color='primary'>
+				<Typography
+					variant='h1'
+					align='center'
+					color='primary'
+					className={classes.headerTitle}
+				>
 					<FormattedMessage
 						id='header.title'
 						description='Header title of app'
 					/>
 				</Typography>
-				<Typography variant='h6' color='primary' align='center'>
+				<Typography
+					variant='h6'
+					color='primary'
+					align='center'
+					className={classes.headerTime}
+				>
 					{time}
 				</Typography>
 			</Container>

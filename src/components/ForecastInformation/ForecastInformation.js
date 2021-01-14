@@ -134,7 +134,7 @@ const ForecastInformation = ({
 							</Typography>
 						}
 						arrow
-						placement='bottom-end'
+						placement='top-start'
 					>
 						<Button
 							variant='contained'
@@ -146,7 +146,6 @@ const ForecastInformation = ({
 							}}
 						>
 							<FormattedMessage id='forecastInformation.seeHourVersionBtn' />
-						
 						</Button>
 					</Tooltip>
 				</div>

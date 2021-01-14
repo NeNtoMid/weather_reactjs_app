@@ -30,6 +30,7 @@ const Card = ({ weather }) => {
 		showDetails,
 		showBtn,
 		mapLoading,
+		cardRef,
 		handleShowDetails,
 		handleFetchData,
 		removeMapLoading,
@@ -62,7 +63,6 @@ const Card = ({ weather }) => {
 					id='card.getForecastBtn'
 					description='Card button to get forecast'
 				/>
-			
 			</Button>
 		);
 	}
@@ -71,7 +71,7 @@ const Card = ({ weather }) => {
 		<CardWrapper className={cardStyles.root}>
 			<CardContent>
 				<Grid container direction='row'>
-					<Grid item>
+					<Grid item ref={cardRef}>
 						<CardDetails
 							weather={weather}
 							show={showDetails}

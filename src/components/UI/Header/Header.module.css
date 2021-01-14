@@ -1,0 +1,56 @@
+.svgWrapper {
+	margin-top: 2rem;
+	padding-left: 3rem;
+}
+
+@media screen and (min-width: 250px) and (max-width: 500px) {
+	.headerTitle {
+		font-size: 3.5rem !important;
+	}
+	.headerTime {
+		font-size: 0.75rem;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.weatherSvg {
+		height: 350px;
+		width: 700px;
+	}
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1199px) {
+	.weatherSvg {
+		height: 250px;
+		width: 600px;
+	}
+}
+
+@media screen and (min-width: 621px) and (max-width: 999px) {
+	.weatherSvg {
+		height: 200px;
+		width: 550px;
+	}
+}
+
+@media screen and (min-width: 100px) and (max-width: 620px) {
+	.weatherSvg {
+		height: 150px;
+		width: 444px;
+	}
+
+	.svgWrapper {
+		padding-left: 0;
+	}
+}
+
+@media screen and (min-width: 100px) and (max-width: 499px) {
+	.weatherSvg {
+		height: 150px;
+		width: 280px;
+	}
+
+	.svgWrapper {
+		padding-left: 0;
+	}
+}
