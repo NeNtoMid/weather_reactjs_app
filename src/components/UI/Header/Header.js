@@ -138,35 +138,3 @@ const Header = () => {
 };
 
 export default Header;
-
-// useEffect(() => {
-// 	const [elements] = sceneWrapper.current.children;
-// 	console.log(elements);
-
-// 	const board = elements.getElementById('board');
-
-// 	const character = elements.getElementById('character');
-// 	const floor = elements.getElementById('floor');
-
-// 	gsap.set([board, character, floor], { autoAlpha: 0 });
-
-// 	const tl = gsap.timeline({
-// 		defaults: { duration: 1, ease: 'power3.inOut' },
-// 	});
-
-// 	tl.fromTo(
-// 		floor,
-// 		{ x: '+=250', y: '+=250', scaleX: 0 },
-// 		{ autoAlpha: 1, x: '-=250', y: '-=250', duration: 1.5, scaleX: 1 }
-// 	)
-// 		.fromTo(
-// 			character,
-// 			{ x: '+=250', scaleY: 0, scaleX: 0 },
-// 			{ autoAlpha: 1, x: '-=250', scaleY: 1, scaleX: 1 }
-// 		)
-// 		.fromTo(
-// 			board,
-// 			{ x: '-=150', y: '+=150' },
-// 			{ x: '+=150', y: '-=150', autoAlpha: 1, duration: 0.7 }
-// 		);
-// }, []);

@@ -77,7 +77,6 @@ const useCard = (weather) => {
 			{ autoAlpha: 0, y: '+=300' },
 			{ autoAlpha: 1, y: '-=300', duration: 1, stagger: 1, delay: 6 }
 		);
-		console.log('cardElement:', cardElements);
 	}, []);
 
 	return {

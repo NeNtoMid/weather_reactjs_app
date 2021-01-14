@@ -7,4 +7,3 @@ export const messages = {
 	en: messages_en,
 };
 export const language = 'pl';
-console.log('language:', language);

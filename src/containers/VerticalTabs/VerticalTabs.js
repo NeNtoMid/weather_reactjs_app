@@ -40,9 +40,21 @@ const VerticalTabs = () => {
 					className={classes.tabs}
 					indicatorColor='primary'
 				>
-					<Tab label={`${days[dayName]}`} {...a11yProps(0)} />
-					<Tab label={`${days[dayName + 1]}`} {...a11yProps(1)} />
-					<Tab label={`${days[dayName + 2]}`} {...a11yProps(2)} />
+					<Tab
+						style={{ marginRight: '1.5rem' }}
+						label={`${days[dayName]}`}
+						{...a11yProps(0)}
+					/>
+					<Tab
+						style={{ marginRight: '1.5rem' }}
+						label={`${days[dayName + 1]}`}
+						{...a11yProps(1)}
+					/>
+					<Tab
+						style={{ marginRight: '1.5rem' }}
+						label={`${days[dayName + 2]}`}
+						{...a11yProps(2)}
+					/>
 				</Tabs>
 
 				{[...new Array(3)].map((cur, i) => {
