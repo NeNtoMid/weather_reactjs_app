@@ -1,46 +1,45 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { TextField } from '@material-ui/core';
 
 import { Autocomplete } from '@material-ui/lab';
 
-import { useSpring, animated } from 'react-spring';
-
 import { FormattedMessage } from 'react-intl';
 
-const Search = (props) => {
-	const animation = useSpring({
-		from: { opacity: 0, width: '10%', height: '10%' },
-		to: { opacity: 1, width: '100%', height: '100%' },
-		delay: 800,
-		overflow: 'hidden',
-	});
+import gsap from 'gsap';
 
+const Search = (props) => {
+	const searchRef = useRef(null);
+	useEffect(() => {
+		const searchElement = searchRef.current;
+
+		gsap.fromTo(
+			searchElement,
+			{ autoAlpha: 0, scaleX: 0, y: '+=250' },
+			{ scaleX: 1, y: '-=250', autoAlpha: 1, duration: 1, ease: 'power3.inOut' }
+		);
+	}, []);
 	return (
-		<animated.nav
-			style={animation}
-			className={{ textAlign: 'center', marginTop: '2rem' }}
-		>
-			<Autocomplete
-				options={props.forwardOptionsHistory}
-				freeSolo
-				renderInput={(params) => (
-					<TextField
-						{...params}
-						label={
-							<FormattedMessage id='search.bar' description='search city bar' />
-						}
-						margin='normal'
-						variant='outlined'
-						error={props.error ? true : false}
-						helperText={props.error}
-						value={props.value}
-						onChange={props.onChange}
-					/>
-				)}
-			/>
-		</animated.nav>
+		<Autocomplete
+			ref={searchRef}
+			options={props.forwardOptionsHistory}
+			freeSolo
+			renderInput={(params) => (
+				<TextField
+					{...params}
+					label={
+						<FormattedMessage id='search.bar' description='search city bar' />
+					}
+					margin='normal'
+					variant='outlined'
+					error={props.error ? true : false}
+					helperText={props.error}
+					value={props.value}
+					onChange={props.onChange}
+				/>
+			)}
+		/>
 	);
 };
 

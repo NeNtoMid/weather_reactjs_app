@@ -12,8 +12,6 @@ import Spinner from './../../components/UI/Spinner/Spinner';
 
 import Error from './../../components/Error/Error';
 
-import { useSpring, animated, config } from 'react-spring';
-
 const Weather = () => {
 	const {
 		weatherData,
@@ -24,25 +22,10 @@ const Weather = () => {
 		clearError,
 	} = useWeather();
 
-	const fade = useSpring({
-		config: config.stiff,
-		from: { opacity: 0, transform: 'scale(0.2) translate(50px, 500px)' },
-		to: { opacity: 1, transform: 'scale(1) translate(0,0)' },
-		delay: 400,
-	});
-
-	let results = (
-		<animated.div style={fade}>
-			<Spinner spinnerInWeather />
-		</animated.div>
-	);
+	let results = <Spinner spinnerInWeather />;
 
 	if (Object.keys(weatherData).length > 0) {
-		results = (
-			<animated.div style={fade}>
-				<WeatherInformation weather={weatherData} />
-			</animated.div>
-		);
+		results = <WeatherInformation weather={weatherData} />;
 	}
 
 	return (
