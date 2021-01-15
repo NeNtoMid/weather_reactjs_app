@@ -97,7 +97,15 @@ const Header = () => {
 				board,
 				{ x: '-=200', y: '+=200' },
 				{ x: '+=200', y: '-=200', autoAlpha: 1, duration: 0.6 }
-			);
+			)
+			.to(svgRef.current, {
+				y: 5,
+
+				repeat: -1,
+				yoyo: true,
+				duration: 1.5,
+				ease: 'none',
+			});
 	}, []);
 
 	return (
