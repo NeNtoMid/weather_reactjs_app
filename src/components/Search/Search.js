@@ -42,6 +42,8 @@ const Search = (props) => {
 			ref={searchRef}
 			options={props.forwardOptionsHistory}
 			freeSolo
+			autoSelect
+			onInputChange={props.onInputChange}
 			renderInput={(params) => (
 				<TextField
 					{...params}
@@ -55,7 +57,6 @@ const Search = (props) => {
 						props.cityNotFoundErr ? props.cityNotFoundErr : ''
 					}`}
 					value={props.value}
-					onChange={props.onChange}
 				/>
 			)}
 		/>
@@ -65,7 +66,7 @@ const Search = (props) => {
 Search.propTypes = {
 	value: PropTypes.string.isRequired,
 	forwardOptionsHistory: PropTypes.array.isRequired,
-	onChange: PropTypes.func.isRequired,
+	onInputChange: PropTypes.func.isRequired,
 	error: PropTypes.string.isRequired,
 	cityNotFoundErr: PropTypes.any.isRequired,
 };

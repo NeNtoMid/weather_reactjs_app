@@ -24,7 +24,7 @@ const setWeatherError = (draft, err) => {
 const addedCityToHistory = (draft) => {
 	const searchedCity =
 		Object.keys(draft.data).length > 0 &&
-		`${draft.data.location.name} , ${draft.data.location.country}`;
+		`${draft.data.location.name} in: ${draft.data.location.country}`;
 
 	if (searchedCity && draft.history.every((el) => el !== searchedCity)) {
 		draft.history.push(searchedCity);

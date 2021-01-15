@@ -19,6 +19,7 @@ const Weather = () => {
 		error,
 		history,
 		handleInputUpdate,
+
 		clearError,
 	} = useWeather();
 
@@ -35,7 +36,7 @@ const Weather = () => {
 				error={input.inputError}
 				cityNotFoundErr={error}
 				forwardOptionsHistory={history}
-				onChange={handleInputUpdate}
+				onInputChange={handleInputUpdate}
 			/>
 			{results}
 			<Error err={error} onClose={clearError} />

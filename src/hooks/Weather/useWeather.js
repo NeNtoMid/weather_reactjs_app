@@ -33,7 +33,7 @@ const useWeather = () => {
 		error = `Can't find city`;
 	}
 
-	const handleInputUpdate = ({ target: { value } }) => {
+	const handleInputUpdate = (event, value) => {
 		let err = '';
 
 		clearError();
@@ -42,11 +42,17 @@ const useWeather = () => {
 			err = 'Nie można znaleźć takiego miasta';
 		}
 
+		if (/(?=in:\s+)/.test(value.toString())) {
+			value = value.split('in:')[0].trim();
+		}
+
 		if (
-			value !== '' &&
-			value.search(
-				/^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$/
-			) === -1
+			value.toString() !== '' &&
+			value
+				.toString()
+				.search(
+					/^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$/
+				) === -1
 		) {
 			err =
 				language === 'en'
@@ -56,7 +62,7 @@ const useWeather = () => {
 
 		setInput((prevState) => ({
 			...prevState,
-			value,
+			value: value.toString(),
 			inputError: err,
 		}));
 	};
@@ -95,6 +101,7 @@ const useWeather = () => {
 		error,
 		history,
 		handleInputUpdate,
+
 		clearError,
 	};
 };
