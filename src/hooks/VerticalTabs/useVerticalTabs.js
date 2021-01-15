@@ -75,14 +75,14 @@ const useVerticalTabs = () => {
 
 	if (language === 'pl') {
 		days = [
-			'Poniedziałek',
+			'Ponied...',
 			'Wtorek',
 			'Środa',
 			'Czwartek',
 			'Piątek',
 			'Sobota',
 			'Niedziela',
-			'Poniedziałek',
+			'Ponied...',
 			'Wtorek',
 			'Środa',
 			'Czwartek',

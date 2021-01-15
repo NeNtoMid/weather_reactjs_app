@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 
-import { CardContent, Container } from '@material-ui/core';
+import { CardContent, Container, CircularProgress } from '@material-ui/core';
 
 import Card from '@material-ui/core/Card';
-
-import Slider from '@material-ui/core/Slider';
 
 import useDiscreteSlider from './../../hooks/DiscreteSlider/useDiscreteSlider';
 
@@ -15,6 +13,8 @@ import Error from './../../components/Error/Error';
 import Select from './../../components/Select/Select';
 
 import { isMobile } from 'mobile-device-detect';
+
+const Slider = lazy(() => import('@material-ui/core/Slider'));
 
 const DiscreteSlider = () => {
 	const {
@@ -34,23 +34,27 @@ const DiscreteSlider = () => {
 
 	if (forecastsinHourVersion.length > 0) {
 		let slider = (
-			<Slider
-				style={{ marginTop: 50, fontSize: '3rem' }}
-				defaultValue={0}
-				getAriaValueText={valuetext}
-				aria-labelledby='discrete-slider-always'
-				step={5}
-				max={115}
-				marks={marks}
-				onChangeCommitted={handleForecastHourChange}
-			/>
+			<Select change={handleForecastHourChange} hour={forecastHour} />
 		);
 
-		if (isMobile) {
-			slider = <Select change={handleForecastHourChange} hour={forecastHour} />;
+		if (!isMobile) {
+			slider = (
+				<Suspense fallback={<CircularProgress />}>
+					<Slider
+						style={{ marginTop: 50, fontSize: '3rem' }}
+						defaultValue={0}
+						getAriaValueText={valuetext}
+						aria-labelledby='discrete-slider-always'
+						step={5}
+						max={115}
+						marks={marks}
+						onChangeCommitted={handleForecastHourChange}
+					/>
+				</Suspense>
+			);
 		}
 		render = [...new Set(forecastsinHourVersion)].map((day) => (
-			<Container key={day} style={{ width: !isMobile ? '170%' : '100%' }}>
+			<Container key={day}>
 				<Card className={cardClass.root} variant='outlined'>
 					<CardContent>
 						<Container>

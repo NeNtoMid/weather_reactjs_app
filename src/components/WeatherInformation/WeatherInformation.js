@@ -16,11 +16,18 @@ const WeatherInformation = (props) => {
 		gsap.fromTo(
 			weatherElements.children,
 			{ autoAlpha: 0, y: '+=250' },
-			{ autoAlpha: 1, y: '-=250', duration: 1, delay: 1, stagger: 2 }
+			{ autoAlpha: 1, y: '-=250', duration: 1, delay: 0.5, stagger: 2 }
 		);
 	}, []);
 	return (
-		<Container style={{ marginTop: 35 }} ref={weatherInformationRef}>
+		<Container
+			style={{
+				marginTop: 35,
+				paddingLeft: 0,
+				paddingRight: 0,
+			}}
+			ref={weatherInformationRef}
+		>
 			<Typography display='inline' color='primary' variant='h3'>
 				{props.weather.location.name}
 			</Typography>

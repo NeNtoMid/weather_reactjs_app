@@ -19,9 +19,8 @@ const useContainerStyles = makeStyles((theme) => ({
 
 const useCardStyles = makeStyles({
 	root: {
-		minWidth: !isMobile ? 470 : 0,
+		minWidth: !isMobile ? 450 : 350,
 		marginTop: 50,
-		margin: '0 50 ',
 	},
 });
 
