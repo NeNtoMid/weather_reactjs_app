@@ -25,7 +25,7 @@ const Search = (props) => {
 				autoAlpha: 1,
 				duration: 1,
 				ease: 'power3.inOut',
-				delay: 4,
+				delay: 1,
 			}
 		);
 	}, []);

@@ -71,7 +71,7 @@ const Card = ({ weather }) => {
 		<CardWrapper className={cardStyles.root}>
 			<CardContent>
 				<Grid container direction='row'>
-					<Grid item ref={cardRef}>
+					<Grid item>
 						<CardDetails
 							weather={weather}
 							show={showDetails}

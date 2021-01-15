@@ -80,30 +80,23 @@ const Header = () => {
 		const board = elements.getElementById('board');
 		const character = elements.getElementById('character');
 
-		const titleElement = titleRef.current;
-
-		gsap.set([floor, board, character, ...titleElement.children], {
+		gsap.set([floor, board, character], {
 			autoAlpha: 0,
 			ease: 'power3.inOut',
 		});
 
 		const tl = gsap.timeline({ defaults: { duration: 0.8 } });
 
-		tl.fromTo(floor, { scale: 0 }, { scale: 1, autoAlpha: 1 })
+		tl.fromTo(floor, { scale: 0 }, { scale: 1, autoAlpha: 1 }, '-=1.5')
 			.fromTo(
 				character,
 				{ x: '+=150', y: '-=150' },
-				{ x: '-=150', y: '+=150', duration: 1.2, autoAlpha: 1 }
+				{ x: '-=150', y: '+=150', duration: 0.7, autoAlpha: 1 }
 			)
 			.fromTo(
 				board,
 				{ x: '-=200', y: '+=200' },
-				{ x: '+=200', y: '-=200', autoAlpha: 1 }
-			)
-			.fromTo(
-				titleElement.children,
-				{ scaleY: 0, x: '-=150' },
-				{ scaleY: 1, x: '+=150', stagger: 0.6, autoAlpha: 1 }
+				{ x: '+=200', y: '-=200', autoAlpha: 1, duration: 0.6 }
 			);
 	}, []);
 
@@ -112,7 +105,7 @@ const Header = () => {
 			<Container ref={svgRef} className={classes.svgWrapper}>
 				<WeatherSvg className={classes.weatherSvg} />
 			</Container>
-			<Container ref={titleRef}>
+			<Container>
 				<Typography
 					variant='h1'
 					align='center'
