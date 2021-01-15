@@ -18,7 +18,7 @@ const useWeather = () => {
 
 	const history = useSelector((state) => state.wth.history);
 
-	const error = useSelector((state) => state.wth.error);
+	let error = useSelector((state) => state.wth.error);
 
 	const [input, setInput] = useState({
 		value: '',
@@ -27,8 +27,20 @@ const useWeather = () => {
 
 	const language = useIntl().locale;
 
+	if (language === 'pl' && error) {
+		error = 'Nie można znaleźć takiego miasta';
+	} else if (language === 'en' && error) {
+		error = `Can't find city`;
+	}
+
 	const handleInputUpdate = ({ target: { value } }) => {
 		let err = '';
+
+		clearError();
+
+		if (error) {
+			err = 'Nie można znaleźć takiego miasta';
+		}
 
 		if (
 			value !== '' &&

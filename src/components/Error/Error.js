@@ -16,7 +16,7 @@ import {
 const Error = ({ err, onClose }) => {
 	return (
 		<Dialog
-			open={err ? true : false}
+			open={err === 'Network Error' ? true : false}
 			onClose={onClose}
 			aria-labelledby='alert-dialog-title'
 			aria-describedby='alert-dialog-description'

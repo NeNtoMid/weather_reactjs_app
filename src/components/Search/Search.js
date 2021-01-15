@@ -50,8 +50,10 @@ const Search = (props) => {
 					}
 					margin='normal'
 					variant='outlined'
-					error={props.error ? true : false}
-					helperText={props.error}
+					error={props.error || props.cityNotFoundErr ? true : false}
+					helperText={`${props.error}${
+						props.cityNotFoundErr ? props.cityNotFoundErr : ''
+					}`}
 					value={props.value}
 					onChange={props.onChange}
 				/>
@@ -65,6 +67,7 @@ Search.propTypes = {
 	forwardOptionsHistory: PropTypes.array.isRequired,
 	onChange: PropTypes.func.isRequired,
 	error: PropTypes.string.isRequired,
+	cityNotFoundErr: PropTypes.any.isRequired,
 };
 
 export default Search;

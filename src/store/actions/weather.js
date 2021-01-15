@@ -27,14 +27,13 @@ export const fetchWeatherData = (input, language) => {
 				},
 			});
 		} catch ({ message }) {
-			if (message === 'Network Error') {
-				dispatch({
-					type: FETCH_WEATHER_DATA_FAIL,
-					payload: {
-						error: message,
-					},
-				});
-			}
+			dispatch({
+				type: FETCH_WEATHER_DATA_FAIL,
+				payload: {
+					error: message,
+				},
+			});
+
 			console.log(message);
 		}
 	};

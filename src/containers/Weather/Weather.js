@@ -33,6 +33,7 @@ const Weather = () => {
 			<Search
 				value={input.value}
 				error={input.inputError}
+				cityNotFoundErr={error}
 				forwardOptionsHistory={history}
 				onChange={handleInputUpdate}
 			/>
