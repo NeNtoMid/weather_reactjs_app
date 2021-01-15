@@ -30,5 +30,6 @@
 	"forecastInformation.sunrise": "Wschód słońca",
 	"forecastInformation.sunset": "Zachód słońca",
 	"forecastInformation.tooltipBtn": "Idź na dół",
-	"forecastInformation.seeHourVersionBtn": "Zobacz godzinną wersję"
+	"forecastInformation.seeHourVersionBtn": "Zobacz godzinną wersję",
+	"select.selectLabel": "Godzina"
 }

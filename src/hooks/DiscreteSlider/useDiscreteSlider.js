@@ -6,9 +6,11 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { setForecastError } from './../../store/actions/index';
 
+import { isMobile } from 'mobile-device-detect';
+
 const useContainerStyles = makeStyles((theme) => ({
 	root: {
-		minWidth: 480,
+		minWidth: !isMobile ? 480 : 0,
 	},
 	margin: {
 		height: theme.spacing(3),
@@ -17,25 +19,33 @@ const useContainerStyles = makeStyles((theme) => ({
 
 const useCardStyles = makeStyles({
 	root: {
-		minWidth: 470,
+		minWidth: !isMobile ? 470 : 0,
 		marginTop: 50,
 		margin: '0 50 ',
 	},
 });
 
-let number = -5;
+let number;
 
-const marks = [...new Array(24)].map((cur, i) => {
-	number += 5;
-	return {
-		value: number,
-		label: `${i}`,
+let marks;
+
+let valuetext;
+
+if (!isMobile) {
+	number = -5;
+
+	marks = [...new Array(24)].map((cur, i) => {
+		number += 5;
+		return {
+			value: number,
+			label: `${i}`,
+		};
+	});
+
+	valuetext = (value) => {
+		return `${value} hour`;
 	};
-});
-
-const valuetext = (value) => {
-	return `${value} hour`;
-};
+}
 
 const useDiscreteSlider = () => {
 	const containerClass = useContainerStyles();
@@ -51,10 +61,14 @@ const useDiscreteSlider = () => {
 	const [forecastHour, setForecastHour] = useState(0);
 
 	const handleForecastHourChange = (event, value) => {
-		const index = marks.findIndex((el) => el.value === value);
+		if (isMobile) {
+			setForecastHour(event.target.value);
+		} else {
+			const index = marks.findIndex((el) => el.value === value);
 
-		if (index !== -1) {
-			setForecastHour(index);
+			if (index !== -1) {
+				setForecastHour(index);
+			}
 		}
 	};
 

@@ -30,5 +30,6 @@
 	"forecastInformation.sunrise": "Sunrise",
 	"forecastInformation.sunset": "Sunset",
 	"forecastInformation.tooltipBtn": "Go down",
-	"forecastInformation.seeHourVersionBtn": "See hour version"
+	"forecastInformation.seeHourVersionBtn": "See hour version",
+	"select.selectLabel": "Hour"
 }
