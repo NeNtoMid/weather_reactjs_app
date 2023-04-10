@@ -6,4 +6,4 @@ export const messages = {
 	pl: messages_pl,
 	en: messages_en,
 };
-export const language = 'pl';
+export const language = 'en';
