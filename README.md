@@ -1,5 +1,5 @@
 # weather_reactjs_app
-## Link to online version of app https://weather-reactjs-app.web.app
+## Link to online version of app https://weather-app-hqfh.onrender.com
 You could check any weather in any city of the world
 
 # This ReactJs App  uses custom hooks , Redux , react hooks and Material UI.  Also it is worth to mention API  called weatherapi which helped me to get weather data
